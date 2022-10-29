@@ -10,6 +10,11 @@ const App = () => {
         {id:'e4',title: 'Credit Card Bill', amount: 20.99, date: new Date(2022, 11,5)},
     ];
 
+    const addExpenseHandler = (expense) => {
+        console.log('In App.js');
+        console.log(expense);
+    }
+
     // return React.createElement('div',
     //     {},
     //     React.createElement('h2',{},'Expense Manager'),
@@ -18,7 +23,7 @@ const App = () => {
 
   return (
     <div>
-        <NewExpense/>
+        <NewExpense onAddExpense={addExpenseHandler}/>
         <Expenses items={expenses} />
     </div>
   );
