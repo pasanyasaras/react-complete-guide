@@ -1,19 +1,22 @@
-import React from "react";
+import React, {useState} from "react";
 import Expenses from './components/Expenses/Expenses';
 import NewExpense from "./components/NewExpense/NewExpense";
 
+const DUMMY_EXPENSES = [
+    {id:'e1',  title: 'Cargills Food City', amount: '5,823.72', date: new Date(2022, 10,29)},
+    {id:'e2',title: 'PickMe Foods', amount: '560.00', date: new Date(2022, 10,30)},
+    {id:'e3',title: 'Dialog Axiata PLC', amount: '2,500.00', date: new Date(2022, 10,31)},
+    {id:'e4',title: 'Daraz.lk', amount: '3,500.00', date: new Date(2022, 11,5)},
+];
+
 const App = () => {
-    const expenses = [
-        {id:'e1',  title: 'Electricity Bill', amount: 10.99, date: new Date(2022, 10,29)},
-        {id:'e2',title: 'Water Bill', amount: 12.99, date: new Date(2022, 10,30)},
-        {id:'e3',title: 'Internet Bill', amount: 5.99, date: new Date(2022, 10,31)},
-        {id:'e4',title: 'Credit Card Bill', amount: 20.99, date: new Date(2022, 11,5)},
-    ];
+    const [expenses,setExpenses] = useState(DUMMY_EXPENSES);
 
     const addExpenseHandler = (expense) => {
-        console.log('In App.js');
-        console.log(expense);
-    }
+        setExpenses((prevExpenses) =>{
+            return [expense, ...prevExpenses];
+        });
+    };
 
     // return React.createElement('div',
     //     {},
